@@ -12,7 +12,7 @@ int main()
     int house;
     cin >> house;
 
-    long dp[1001][3] = {0L, };
+    long dp[1001][3] = {0L, }; // 값 커지니 타입 주의!, 초기화.
     int cost[3];
 
     for(int n=1;n<=house;n++)
