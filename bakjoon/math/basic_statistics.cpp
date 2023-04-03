@@ -33,6 +33,7 @@ int main()
     int cnt;
     cin >> cnt;
 
+    // long long 하면 에러발생 ㅡㅡ;
     double total;
 
     int k;
@@ -52,9 +53,11 @@ int main()
     //cout.precision(1);
     // cout << fixedAvg << "\n";
 
+    // 소수점 이하 첫째 자리에서 반올림한 값을 출력한다.
     cout <<  (int)floor( (total / cnt) + 0.5) << "\n";
 
-    // 중앙값
+    // 중앙값 ( vector size와 입력갯수와 무관)
+    // int vMid = values[values.size()/2];
     int vMid = values[cnt/2];
     cout << vMid << "\n";
 
@@ -85,7 +88,7 @@ int main()
     else
         cout << v[0].first << "\n";
 
-    // 범위
-    cout << values.back() - values.front() << "\n";
+    // 범위 : abs 무관
+    cout << abs(values.back() - values.front()) << "\n";
     return 0;
 }
