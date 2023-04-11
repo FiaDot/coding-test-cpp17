@@ -1,7 +1,6 @@
 //
 // Created by LEE GUNHO on 2023/04/11.
 //
-
 // 나무 자르기 : https://www.acmicpc.net/problem/2805
 
 /*
@@ -25,15 +24,14 @@
 7 // 5아님 ㅋㅋ
 */
 
-// 1 ≤ N ≤ 1,000,000, 1 ≤ M ≤ 2,000,000,000
-
 #include <iostream>
 #include <vector>
 using namespace std;
 
 vector<long long> v;
 
-int cut(long long height)
+// 2% 틀림 이유 2 : int 반환하고 있었음 ㅡㅡ;
+long long cut(long long height)
 {
     long long sum = 0;
     for(long long k: v)
@@ -43,7 +41,6 @@ int cut(long long height)
     }
     return sum;
 }
-
 
 int main()
 {
@@ -59,6 +56,7 @@ int main()
 
         if ( maxv < h )
             maxv = h;
+
         v.push_back(h);
     }
 
@@ -71,22 +69,22 @@ int main()
     while(left<=right)
     {
         mid = (left + right) / 2;
+
+//        long long sum = 0;
+//        for(long long k: v)
+//        {
+//            if ( k > mid )
+//                sum += k - mid;
+//        }
         long long sum = cut(mid);
         if ( M > sum )
         {
             right = mid-1;
         }
-        else if ( M < sum )
-        {
-            if ( ans > mid )
-                ans = mid;
-
-            left = mid+1;
-        }
-        else
+        else//  if ( M < sum ) // 2% 틀림 이유 1 (최적해가 아니라 근사해도 필요함)
         {
             ans = mid;
-            break;
+            left = mid+1;
         }
     }
 
@@ -95,5 +93,4 @@ int main()
 }
 
 // 2% 틀림
-
 
