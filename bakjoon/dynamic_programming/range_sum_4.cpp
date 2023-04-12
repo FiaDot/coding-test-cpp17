@@ -2,7 +2,6 @@
 // Created by LEE GUNHO on 2023/04/12.
 //
 
-
 // 구간 합 구하기 4 : https://www.acmicpc.net/problem/11659
 
 #include <iostream>
@@ -18,29 +17,26 @@ int main()
     int N,M;
     cin >> N >> M;
 
-    vector<int> v;
-    for(int n=0;n<N;n++)
+
+    vector<long> cache(N+1);
+    cache[0] = 0;
+
+    int k;
+    for(int n=1;n<=N;n++)
     {
-        int k;
         cin >> k;
-        v.push_back(k);
+        cache[n] = cache[n-1] + k;
     }
 
+    int i,j;
     for(int n=0;n<M;n++)
     {
-        int i,j;
         cin >> i >> j;
-
-        long long sum = 0;
-        for(int k=i-1;k<j;k++)
-        {
-            sum += v[k];
-        }
-
-        cout << sum << "\n";
+        cout << cache[j] - cache[i-1] << "\n";
     }
 
     return 0;
 }
 
 // 1차 : 그냥 더하면 시간 초과
+// 2차 : cache 타입 int -> long
