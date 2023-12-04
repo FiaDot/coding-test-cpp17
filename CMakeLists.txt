@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.26)
 project(coding_test_cpp17)
 
 set(CMAKE_CXX_STANDARD 17)
